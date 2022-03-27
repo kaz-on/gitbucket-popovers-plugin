@@ -1,0 +1,110 @@
+.popovers-content {
+  max-width: 500px;
+  overflow: hidden;
+  overflow-wrap: break-word; // for long words
+
+  .title, .labels, .dates, .assignees {
+    display: inline;
+  }
+
+  div:not(:first-child) {
+    margin-top: 3px;
+
+    &.heading, &.body {
+      margin-top: 6px;
+    }
+  }
+
+  a {
+    &:hover, &:active {
+      color: royalblue;
+    }
+  }
+
+  .octicon {
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .title {
+    font-size: 15px;
+    color: #333;
+
+    .octicon {
+      font-size: 16px;
+
+      &.octicon-issue-opened,
+      &.octicon-git-pull-request.open {
+        color: #6CC644;
+      }
+
+      &.octicon-issue-closed,
+      &.octicon-git-pull-request.closed {
+        color: #CD2C00;
+      }
+
+      &.octicon-git-merge {
+        color: blueviolet;
+      }
+
+      &.octicon-issue-opened,
+      &.octicon-issue-closed {
+        margin-right: 0.1em;
+      }
+    }
+
+    a {
+      text-decoration: none;
+
+      &:link, &:visited {
+        color: #333;
+      }
+
+      &:hover, &:active {
+        color: dodgerblue;
+      }
+    }
+  }
+
+  .date {
+    color: #333;
+  }
+
+  .body {
+    max-height: 200px;
+    line-height: normal; // Prevent unnecessary scrollbars in Firefox
+    white-space: pre-wrap;
+    overflow-y: auto; // Auto vertical scrollbar
+  }
+
+  .small {
+    font-size: 13px;
+  }
+
+  .label {
+    font-size: 11.25px;
+    display: inline-block; // Enable word-breaking between labels
+  }
+
+  img.avatar-mini {
+    width: 20px;
+    height: 20px;
+  }
+
+  .label, .avatar:not(:first-child) {
+    margin-left: .4em;
+  }
+}
+
+.tooltip {
+  overflow-wrap: break-word; // for long words
+  pointer-events: none; // Prevent hover effects from flashing
+}
+
+.tpd-content-wrapper {
+  overflow: visible; // for tooltips
+}
+
+.tpd-content .tooltip {
+  white-space: nowrap; // Enable tooltips to protrude from the popover
+}
