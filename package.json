@@ -9,7 +9,6 @@
     "update-all": "npm ci & ncu -u & npm i"
   },
   "sideEffects": false,
-  "dependencies": {},
   "devDependencies": {
     "@octokit/types": "^9.2.0",
     "@types/bootstrap": "^5.2.6",
@@ -22,6 +21,7 @@
     "sass-loader": "^13.2.2",
     "sass-to-string": "^1.6.3",
     "ts-loader": "^9.4.2",
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.4",
     "webpack": "^5.82.0",
     "webpack-cli": "^5.0.2"
