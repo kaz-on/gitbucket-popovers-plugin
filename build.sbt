@@ -1,6 +1,6 @@
 name := "gitbucket-popovers-plugin"
 organization := "io.github.gitbucket"
-version := "1.0.0"
+version := "1.1.0"
 scalaVersion := "2.13.10"
 gitbucketVersion := "4.39.0"
 

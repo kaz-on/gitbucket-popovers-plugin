@@ -8,7 +8,8 @@ class Plugin extends gitbucket.core.plugin.Plugin {
   override val pluginName: String = "Popovers Plugin"
   override val description: String = "Show popover preview on links to issues and pull requests"
   override val versions: List[Version] = List(
-    new Version("1.0.0")
+    new Version("1.0.0"),
+    new Version("1.1.0")
   )
 
   override val assetsMappings = Seq(
