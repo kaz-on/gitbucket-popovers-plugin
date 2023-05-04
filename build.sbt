@@ -1,8 +1,8 @@
 name := "gitbucket-popovers-plugin"
 organization := "io.github.gitbucket"
 version := "1.0.0"
-scalaVersion := "2.13.8"
-gitbucketVersion := "4.35.3"
+scalaVersion := "2.13.10"
+gitbucketVersion := "4.39.0"
 
 import scala.sys.process._
 

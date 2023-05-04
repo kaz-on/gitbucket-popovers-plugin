@@ -11,19 +11,19 @@
   "sideEffects": false,
   "dependencies": {},
   "devDependencies": {
-    "@octokit/types": "^6.34.0",
-    "@types/bootstrap": "^5.1.9",
-    "@types/jquery": "^3.5.14",
-    "@typescript-eslint/eslint-plugin": "^5.16.0",
-    "@typescript-eslint/parser": "^5.16.0",
-    "eslint": "^8.12.0",
-    "eslint-webpack-plugin": "^3.1.1",
-    "sass": "^1.49.9",
-    "sass-loader": "^12.6.0",
-    "sass-to-string": "^1.6.2",
-    "ts-loader": "^9.2.8",
-    "typescript": "^4.6.3",
-    "webpack": "^5.70.0",
-    "webpack-cli": "^4.9.2"
+    "@octokit/types": "^9.2.0",
+    "@types/bootstrap": "^5.2.6",
+    "@types/jquery": "^3.5.16",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "eslint": "^8.39.0",
+    "eslint-webpack-plugin": "^4.0.1",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
+    "sass-to-string": "^1.6.3",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.0.2"
   }
 }

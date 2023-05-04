@@ -31,7 +31,7 @@ Please check the **Base URL** under **System settings** of your GitBucket.
 
 ## Build from source
 
-1. Install Node.js, npm, sbt, and JDK 8
+1. Install Node.js, npm, sbt, and JDK
 2. Clone this repository
 3. Run `npm ci`
 4. Run `sbt assembly`
