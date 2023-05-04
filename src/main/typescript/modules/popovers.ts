@@ -12,49 +12,41 @@ interface Option {
 }
 
 
-export class Popovers {
-  private readonly creators: PopoverCreator[] = [];
+const creators: PopoverCreator[] = [
+  new IssuesCreator(),
+  new PullsCreator()
+];
 
-  constructor() {
-    this.creators.push(new IssuesCreator());
-    this.creators.push(new PullsCreator());
+
+function getPopover(path: string): Popover | undefined {
+  for(const creator of creators) {
+    const popover = creator.create(path);
+    if(popover)
+      return popover;
   }
-
-  private getPopover(path: string): Popover | undefined {
-    for(const creator of this.creators) {
-      const popover = creator.create(path);
-      if(popover)
-        return popover;
-    }
-    return; // undefined
-  }
-
-  public attach(options?: Option): void {
-    const root = options?.root ?? document;
-
-    const selector = 'a[href]:not([href^="#"])' + notAttachedSelector + notPopoverCheckedSelector;
-    const elems = root.querySelectorAll<HTMLAnchorElement>(selector);
-
-    for(const elem of elems) {
-      elem.classList.add(popoverCheckedClass);
-
-      const tabs = elem.closest('.nav.nav-tabs');
-      if(tabs) continue;
-
-      const linkPageUrl = getPageUrl(elem.href);
-      const path = checkAndRemovePrefix(linkPageUrl, PathInfo.baseUrl);
-      if(!path) continue;
-
-      const popover = this.getPopover(path);
-      if(!popover) continue;
-
-      popover.attach(elem, options?.container);
-    }
-  }
+  return; // undefined
 }
 
 
 export function attachPopovers(options?: Option): void {
-  const popovers = new Popovers();
-  popovers.attach(options);
+  const root = options?.root ?? document;
+
+  const selector = 'a[href]:not([href^="#"])' + notAttachedSelector + notPopoverCheckedSelector;
+  const elems = root.querySelectorAll<HTMLAnchorElement>(selector);
+
+  for(const elem of elems) {
+    elem.classList.add(popoverCheckedClass);
+
+    const tabs = elem.closest('.nav.nav-tabs');
+    if(tabs) continue;
+
+    const linkPageUrl = getPageUrl(elem.href);
+    const path = checkAndRemovePrefix(linkPageUrl, PathInfo.baseUrl);
+    if(!path) continue;
+
+    const popover = getPopover(path);
+    if(!popover) continue;
+
+    popover.attach(elem, options?.container);
+  }
 }

@@ -14,12 +14,28 @@ export abstract class PopoverCreator {
 
 
 //
+// Helper Function
+//
+
+function getResponseMessage(responseJSON: unknown): string | undefined {
+  let responseMessage;
+  if(isUnknownObject(responseJSON)) {
+    const message = responseJSON['message'];
+    if(typeof message === 'string') {
+      responseMessage = message;
+    }
+  }
+  return responseMessage;
+}
+
+
+//
 // Popover
 //
 
 export abstract class Popover {
   constructor(
-    protected readonly ajaxUrl: string,
+    protected readonly url: string,
   ) {}
 
   protected abstract buildContent(responseDate: Date | null, data: unknown, textStatus: JQuery.Ajax.SuccessTextStatus, jqXHR: JQuery.jqXHR): PopHelper.Elements;
@@ -37,19 +53,8 @@ export abstract class Popover {
     });
   }
 
-  private static getResponseMessage(responseJSON: unknown): string | undefined {
-    let responseMessage;
-    if(isUnknownObject(responseJSON)) {
-      const message = responseJSON['message'];
-      if(typeof message === 'string') {
-        responseMessage = message;
-      }
-    }
-    return responseMessage;
-  }
-
   private readonly errorCallback = (jqXHR: JQuery.jqXHR, textStatus: JQuery.Ajax.ErrorTextStatus, errorThrown: string): Tipped.FunctionContent => {
-    const responseMessage = Popover.getResponseMessage(jqXHR.responseJSON);
+    const responseMessage = getResponseMessage(jqXHR.responseJSON);
     const errorMessage = responseMessage || errorThrown;
 
     return PopHelper.element('div', {
@@ -72,7 +77,7 @@ export abstract class Popover {
       container: container,
       ajax: {
         type: 'GET',
-        url: this.ajaxUrl,
+        url: this.url,
         dataType: 'json',
         jsonp: false,
         cache: true, // Use GitBucket's cache control
