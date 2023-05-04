@@ -19,7 +19,7 @@ Download jar file from the [Releases page](https://github.com/kaz-on/gitbucket-p
 ## Operating requirements
 
 * GitBucket 4.35.0 or later
-* Modern web browsers  
+* Web browsers that support ES2020 features  
   The latest version of Chrome, Edge or Firefox is recommended.
 
 
