@@ -7,8 +7,8 @@ import {
 
 
 interface Option {
-  root?: Document | Element;
-  container?: string | false | Element;
+  root?: Document | Element | undefined;
+  container?: string | false | Element | undefined;
 }
 
 

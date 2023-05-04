@@ -17,10 +17,11 @@ export function toLocaleDateTimeString(date: Date, locale?: string): string {
 
 type TimeUnit = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year';
 
-function getRelativeString(value: number, unit: TimeUnit, locale?: string, numeric?: 'always' | 'auto'): string {
+function getRelativeString(value: number, unit: TimeUnit, locale?: string, numericAuto?: boolean): string {
   value = Math.round(value);
 
   if(Intl && Intl.RelativeTimeFormat) {
+    const numeric = numericAuto ? 'auto' : 'always';
     const rtf = new Intl.RelativeTimeFormat(locale, { numeric: numeric });
     return rtf.format(value, unit);
   }
@@ -34,7 +35,9 @@ function getRelativeString(value: number, unit: TimeUnit, locale?: string, numer
   }
 }
 
-function toRelativeString(startUnit: TimeUnit, baseDate: Date | null | undefined, targetDate: Date, locale?: string, numeric?: 'always' | 'auto'): string {
+function toRelativeString(
+  startUnit: TimeUnit, baseDate: Date | null | undefined, targetDate: Date, locale?: string, numericAuto?: boolean
+): string {
   if(baseDate) {
     const second = 1000;
     const minute = 60 * second;
@@ -65,10 +68,10 @@ function toRelativeString(startUnit: TimeUnit, baseDate: Date | null | undefined
       const current = unitMap[i]!;
       const next = unitMap[i + 1];
       if(!next || elapsed < next.time - current.time / 2) {
-        return getRelativeString(diff / current.time, current.unit, locale, numeric);
+        return getRelativeString(diff / current.time, current.unit, locale, numericAuto);
       }
-      // Clear `numeric` if unit is not `startUnit`
-      numeric = undefined;
+      // Set `numericAuto` to false if unit is not `startUnit`
+      numericAuto = false;
     }
   }
 
@@ -78,7 +81,7 @@ function toRelativeString(startUnit: TimeUnit, baseDate: Date | null | undefined
 export function toRelativeDateString(baseDate: Date | null | undefined, targetDate: Date, locale?: string): string {
   const base0amDate = baseDate ? get0amDate(baseDate) : null;
   const target0amDate = get0amDate(targetDate);
-  return toRelativeString('day', base0amDate, target0amDate, locale, 'auto');
+  return toRelativeString('day', base0amDate, target0amDate, locale, true);
 }
 
 export function toRelativeTimeString(baseDate: Date | null | undefined, targetDate: Date, locale?: string): string {

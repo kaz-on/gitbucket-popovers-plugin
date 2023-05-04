@@ -7,8 +7,8 @@ import { PullsCreator } from './popover/pulls';
 
 
 interface Option {
-  root?: Document | Element;
-  container?: Tipped.SelectorOrElement;
+  root?: Document | Element | undefined;
+  container?: Tipped.SelectorOrElement | undefined;
 }
 
 

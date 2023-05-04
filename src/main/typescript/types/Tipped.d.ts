@@ -7,14 +7,14 @@ declare namespace Tipped {
   type EventType = string;
   type SelectorOrElement = SelectorType | ElementType;
   type ShowHideEvents = EventType | {
-    element?: false | EventType;
-    tooltip?: false | EventType;
-    target?: false | EventType;
+    element?: false | EventType | undefined;
+    tooltip?: false | EventType | undefined;
+    target?: false | EventType | undefined;
   }
   type Content = string | ElementType;
   type FunctionContent = Content | {
-    title?: string | ElementType;
-    content?: string | ElementType;
+    title?: string | ElementType | undefined;
+    content?: string | ElementType | undefined;
   };
   type CreateFunction = (element: ElementType) => FunctionContent;
   type Positions = 'topleft' | 'top' | 'topright' | 'righttop' | 'right' | 'rightbottom' | 'bottomleft' | 'bottom' | 'bottomright' | 'lefttop' | 'left' | 'leftbottom';
@@ -22,47 +22,47 @@ declare namespace Tipped {
   type Skins = 'dark' | 'light' | 'gray' | 'red' | 'green' | 'blue' | 'lightyellow' | 'lightblue' | 'lightpink';
 
   interface Options {
-    ajax?: JQuery.AjaxSettings;
-    behavior?: 'hide' | 'mouse' | 'sticky';
-    cache?: boolean;
-    container?: SelectorOrElement;
-    containment?: false | SelectorType | {
-      selector?: SelectorType;
-      padding?: number;
+    ajax?: JQuery.AjaxSettings | undefined;
+    behavior?: 'hide' | 'mouse' | 'sticky' | undefined;
+    cache?: boolean | undefined;
+    container?: SelectorOrElement | undefined;
+    containment?: false | SelectorType | undefined | {
+      selector?: SelectorType | undefined;
+      padding?: number | undefined;
     };
-    close?: boolean | 'overlap';
-    detach?: boolean;
-    fadeIn?: number;
-    fadeOut?: number;
-    fixed?: boolean;
-    hideAfter?: number;
-    hideDelay?: number;
-    hideOn?: false | ShowHideEvents;
-    hideOnClickOutside?: boolean;
-    hideOthers?: boolean;
-    inline?: string;
-    maxWidth?: number;
-    offset?: {
-      x?: number;
-      y?: number;
+    close?: boolean | 'overlap' | undefined;
+    detach?: boolean | undefined;
+    fadeIn?: number | undefined;
+    fadeOut?: number | undefined;
+    fixed?: boolean | undefined;
+    hideAfter?: number | undefined;
+    hideDelay?: number | undefined;
+    hideOn?: false | ShowHideEvents | undefined;
+    hideOnClickOutside?: boolean | undefined;
+    hideOthers?: boolean | undefined;
+    inline?: string | undefined;
+    maxWidth?: number | undefined;
+    offset?: undefined | {
+      x?: number | undefined;
+      y?: number | undefined;
     };
-    padding?: boolean;
-    position?: Positions | {
-      target?: Positions;
-      tooltip?: Positions;
+    padding?: boolean | undefined;
+    position?: Positions | undefined | {
+      target?: Positions | undefined;
+      tooltip?: Positions | undefined;
     };
-    radius?: boolean;
-    shadow?: boolean;
-    showDelay?: number;
-    showOn?: false | ShowHideEvents;
-    size?: Sizes;
-    skin?: Skins;
-    stem?: boolean;
-    spinner?: boolean;
-    target?: 'element' | 'mouse' | ElementType;
-    title?: boolean | string;
-    voila?: boolean;
-    zIndex?: number;
+    radius?: boolean | undefined;
+    shadow?: boolean | undefined;
+    showDelay?: number | undefined;
+    showOn?: false | ShowHideEvents | undefined;
+    size?: Sizes | undefined;
+    skin?: Skins | undefined;
+    stem?: boolean | undefined;
+    spinner?: boolean | undefined;
+    target?: 'element' | 'mouse' | ElementType | undefined;
+    title?: boolean | string | undefined;
+    voila?: boolean | undefined;
+    zIndex?: number | undefined;
     afterHide?(content: ElementType, element: ElementType): void;
     afterUpdate?(content: ElementType, element: ElementType): void;
     onShow?(content: ElementType, element: ElementType): void;

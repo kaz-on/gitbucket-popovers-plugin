@@ -12,11 +12,11 @@ import { toLocaleDateString, toLocaleDateTimeString, toRelativeDateString, toRel
 export type Elements = string | Node | (string | Node)[];
 
 interface _ElementAttribute {
-  alt?: string | null;
-  href?: string | null;
-  src?: string | null;
-  style?: string | null;
-  title?: string | null;
+  alt?: string | null | undefined;
+  href?: string | null | undefined;
+  src?: string | null | undefined;
+  style?: string | null | undefined;
+  title?: string | null | undefined;
 }
 
 const elementAttributes = ['alt', 'href', 'src', 'style', 'title'] as const;
@@ -28,8 +28,8 @@ type Attribute2 = keyof _ElementAttribute;
 type ElementAttribute = [Attribute1, Attribute2] extends [Attribute2, Attribute1] ? _ElementAttribute : never;
 
 export interface ElementOption extends ElementAttribute {
-  class?: string | string[] | null;
-  child?: Elements | null;
+  class?: string | string[] | null | undefined;
+  child?: Elements | null | undefined;
 }
 
 type UsersResponseData = Endpoints['GET /users']['response']['data'];
@@ -53,8 +53,8 @@ export interface IssueContentData {
   assignees: UsersResponseData;
   labels: IssueLabelsResponseData;
   milestone: MilestoneResponseData | null | undefined;
-  base_label?: string | null;
-  head_label?: string | null;
+  base_label?: string | null | undefined;
+  head_label?: string | null | undefined;
   body: string | null | undefined;
 }
 
