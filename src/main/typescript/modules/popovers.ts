@@ -18,7 +18,7 @@ const creators: PopoverCreator[] = [
 ];
 
 
-function getPopover(path: string): Popover | undefined {
+function createPopover(path: string): Popover | undefined {
   for(const creator of creators) {
     const popover = creator.create(path);
     if(popover)
@@ -44,7 +44,7 @@ export function attachPopovers(options?: Option): void {
     const path = checkAndRemovePrefix(linkPageUrl, PathInfo.baseUrl);
     if(!path) continue;
 
-    const popover = getPopover(path);
+    const popover = createPopover(path);
     if(!popover) continue;
 
     popover.attach(elem, options?.container);

@@ -9,7 +9,7 @@ import * as PopHelper from './pop-helper';
 //
 
 export class PullsCreator extends PopoverCreator {
-  public create(path: string): Popover | undefined {
+  public create(path: string): Pulls | undefined {
     const match = path.match(/^\/([^/]+)\/([^/]+)\/pull\/(\d+)$/);
     if(!match) return; // undefined
 

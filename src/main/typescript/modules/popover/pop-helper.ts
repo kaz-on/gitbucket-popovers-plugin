@@ -22,8 +22,7 @@ interface _ElementAttribute {
 const elementAttributes = ['alt', 'href', 'src', 'style', 'title'] as const;
 
 // Check attribute list
-type Attributes = typeof elementAttributes;
-type Attribute1 = Attributes[number];
+type Attribute1 = typeof elementAttributes[number];
 type Attribute2 = keyof _ElementAttribute;
 type ElementAttribute = [Attribute1, Attribute2] extends [Attribute2, Attribute1] ? _ElementAttribute : never;
 
