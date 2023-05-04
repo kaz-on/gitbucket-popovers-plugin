@@ -147,11 +147,11 @@ export function user(userData: UserResponseData): HTMLAnchorElement {
   });
 }
 
-export function avatar(userData: UserResponseData): HTMLAnchorElement {
+export function avatar(userData: UserResponseData, titilePrefix = ''): HTMLAnchorElement {
   return element('a', {
     class: 'avatar',
     href: userData.html_url,
-    title: userData.login,
+    title: titilePrefix + userData.login,
     child: element('img', {
       class: 'avatar-mini',
       src: userData.avatar_url,
@@ -160,9 +160,9 @@ export function avatar(userData: UserResponseData): HTMLAnchorElement {
   });
 }
 
-export function avatars(users: UsersResponseData): DocumentFragment {
+export function avatars(users: UsersResponseData, titilePrefix = ''): DocumentFragment {
   return fragment(
-    ...users.map( userData => avatar(userData) ),
+    ...users.map( userData => avatar(userData, titilePrefix) ),
   );
 }
 
@@ -286,8 +286,8 @@ export function issueContent(data: IssueContentData): DocumentFragment {
             ? element('div', {
                 class: 'assignees',
                 child: [
-                  ', assigned to ',
-                  avatars(data.assignees),
+                  ' | ',
+                  avatars(data.assignees, 'assigned to '),
                 ],
               })
             : null
