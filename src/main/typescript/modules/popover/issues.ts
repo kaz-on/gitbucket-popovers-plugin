@@ -46,6 +46,7 @@ export class Issues extends Popover {
       repo: this.repo,
       octicon: (data.state === 'open') ? 'issue-opened' : 'issue-closed',
       state: data.state,
+      type: 'issue',
       html_url: data.html_url,
       title: data.title,
       number: data.number,

@@ -46,6 +46,7 @@ export class Pulls extends Popover {
       repo: this.repo,
       octicon: data.merged ? 'git-merge' : 'git-pull-request',
       state: data.merged ? 'merged' : data.state,
+      type: 'pull request',
       html_url: data.html_url,
       title: data.title,
       number: data.number,

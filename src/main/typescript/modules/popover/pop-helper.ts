@@ -44,6 +44,7 @@ export interface IssueContentData {
   repo: string;
   octicon: Octicon;
   state: string;
+  type: string;
   html_url: string;
   title: string;
   number: number;
@@ -238,7 +239,7 @@ export function issueContent(data: IssueContentData): DocumentFragment {
         element('div', {
           class: 'title',
           child: [
-            octicon(data.octicon, { class: data.state, title: data.state }),
+            octicon(data.octicon, { class: data.state, title: data.state + ' ' + data.type }),
             element('a', {
               href: data.html_url,
               child: [
