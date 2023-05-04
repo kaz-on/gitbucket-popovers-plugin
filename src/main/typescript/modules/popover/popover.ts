@@ -38,14 +38,14 @@ export abstract class Popover {
     protected readonly url: string,
   ) {}
 
-  protected abstract buildContent(responseDate: Date | null, data: unknown, textStatus: JQuery.Ajax.SuccessTextStatus, jqXHR: JQuery.jqXHR): PopHelper.Elements;
+  protected abstract buildContent(responseDate: Date, data: unknown, textStatus: JQuery.Ajax.SuccessTextStatus, jqXHR: JQuery.jqXHR): PopHelper.Elements;
 
   private readonly successCallback = (data: unknown, textStatus: JQuery.Ajax.SuccessTextStatus, jqXHR: JQuery.jqXHR): Tipped.FunctionContent => {
     if(popoversMode === 'debug')
       console.log(data);
 
     const responseDateString = jqXHR.getResponseHeader('date');
-    const responseDate = responseDateString ? new Date(responseDateString) : null;
+    const responseDate = responseDateString ? new Date(responseDateString) : new Date();
 
     return PopHelper.element('div', {
       class: contentWrapperClass,

@@ -39,7 +39,7 @@ export class Issues extends Popover {
     super(`${PathInfo.apiPath}/repos/${owner}/${repo}/issues/${issue_number}`);
   }
 
-  protected buildContent(responseDate: Date | null, data: IssueResponseData): PopHelper.Elements {
+  protected buildContent(responseDate: Date, data: IssueResponseData): PopHelper.Elements {
     const issueContentData: PopHelper.IssueContentData = {
       response_date: responseDate,
       owner: this.owner,

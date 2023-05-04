@@ -39,7 +39,7 @@ type IssueLabelResponseData = IssueLabelsResponseData[0];
 type MilestoneResponseData = Endpoints['GET /repos/{owner}/{repo}/milestones/{milestone_number}']['response']['data'];
 
 export interface IssueContentData {
-  response_date: Date | null | undefined;
+  response_date: Date;
   owner: string;
   repo: string;
   octicon: Octicon;
@@ -114,7 +114,7 @@ export function element(tagName: string, options?: ElementOption): HTMLElement {
   return elem;
 }
 
-export function date(dateString: string, responseDate: Date | null | undefined): HTMLSpanElement {
+export function date(dateString: string, responseDate: Date): HTMLSpanElement {
   const date = new Date(dateString);
   return element('span', {
     class: 'date',
@@ -123,7 +123,7 @@ export function date(dateString: string, responseDate: Date | null | undefined):
   });
 }
 
-export function datetime(dateString: string, responseDate: Date | null | undefined): HTMLSpanElement {
+export function datetime(dateString: string, responseDate: Date): HTMLSpanElement {
   const date = new Date(dateString);
   return element('span', {
     class: 'date',
@@ -188,7 +188,7 @@ export function labels(labels: IssueLabelsResponseData): DocumentFragment {
   );
 }
 
-export function milestone(milestoneData: MilestoneResponseData, responseDate: Date | null | undefined): DocumentFragment {
+export function milestone(milestoneData: MilestoneResponseData, responseDate: Date): DocumentFragment {
   return fragment(
     element('a', {
       class: 'strong',
