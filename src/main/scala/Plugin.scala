@@ -21,7 +21,7 @@ class Plugin extends gitbucket.core.plugin.Plugin {
     Seq(".*" -> s"""
       |const _popoversBasePath = "${basePath}";
       |</script>
-      |<script src="${assetsPath}/main.js" defer></script>
-      |<script>""".stripMargin)
+      |<script src="${assetsPath}/main.js" defer>
+      |""".stripMargin)
   }
 }
